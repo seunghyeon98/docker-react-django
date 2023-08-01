@@ -1,0 +1,18 @@
+# docker-compose.yml 파일 작성
+version: "3.7"
+services:
+  sample:
+    container_name: todo-react-app
+    build:
+      context: .
+      # 도커 파일명과 맞추기
+      dockerfile: DockerFile
+    volumes:
+      - ".:/app"
+      - "/app/node_modules"
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
